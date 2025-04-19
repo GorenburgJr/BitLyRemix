@@ -26,9 +26,9 @@ import { DataSource } from 'typeorm';
 import { User } from '../../src/entity/User';
 import { Url } from '../../src/entity/Url';
 
-declare global {
-  let __dataSource: DataSource | undefined;
-}
+// declare global {
+//   let __dataSource: DataSource | undefined;
+// }
 
 let AppDataSource: DataSource;
 

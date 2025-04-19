@@ -1,4 +1,5 @@
 import {
+  Link,
   Links,
   Meta,
   Outlet,
@@ -7,7 +8,10 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
+
 import "./tailwind.css";
+import styles from './styles/shared.css'
+import MainHeader from "./components/MainNav";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -18,7 +22,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: styles,
   },
 ];
 
@@ -32,7 +36,34 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <nav>
+          <MainHeader/>
+        </nav>
         {children}
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export function ErrorBoundary({ error }: { error: Error }) {
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+        <title>An error</title>
+      </head>
+      <body>
+        <header>
+          <MainHeader/>
+        </header>
+        <main className="">
+          <h1>An Error</h1>
+          <p>{error.message}</p>
+          <p>Back to <Link to='/'>safety</Link>!</p>
+        </main>
         <ScrollRestoration />
         <Scripts />
       </body>

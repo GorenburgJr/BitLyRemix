@@ -6,13 +6,12 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    firstName: string
+    @Column({ unique: true })
+    email: string
 
     @Column()
-    lastName: string
+    passwordHash: string
 
-    @Column()
-    age: number
+    //one to many url
 
 }
