@@ -1,16 +1,32 @@
 {
-   "compilerOptions": {
-      "jsx": "react-jsx",
-      "lib": [
-         "es5",
-         "es6"
-      ],
-      "target": "es5",
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "outDir": "./build",
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "sourceMap": true
-   }
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/.server/**/*.ts",
+    "**/.server/**/*.tsx",
+    "**/.client/**/*.ts",
+    "**/.client/**/*.tsx"
+, "app/entry.client.jsx", "app/entry.server.jsx", "app/root.jsx", "app/components/navigation/Logged.jsx", "app/routes/__app.expenses.$id.jsx", "app/routes/__app.expenses.add.jsx", "app/routes/__app.expenses.analysis.jsx", "app/routes/__app.expenses.jsx", "app/routes/index.jsx", "app/routes/__marketing._index.jsx", "app/routes/auth.jsx", "app/routes/__marketing.pricing.jsx", "app/routes/__marketing.jsx", "app/routes/$.jsx", "app/routes/expenses.raw.jsx"  ],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "types": ["@remix-run/node", "vite/client"],
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "target": "ES2022",
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"]
+    },
+
+    // Vite takes care of building everything, not tsc.
+    "noEmit": true
+  }
 }

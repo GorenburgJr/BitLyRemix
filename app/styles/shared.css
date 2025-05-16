@@ -20,33 +20,29 @@
   --color-primary-100: #af82fc;
   --color-primary-200: #975bfd;
   --color-primary-300: #8845fc;
-  --color-primary-400: #7223fa;
-  --color-primary-500: #5d00ff;
-  --color-primary-600: #5402e3;
-  --color-primary-700: #4a02c6;
-  --color-primary-800: #3c02a1;
+  /* --color-primary-400: #dfdddd; */
+  --color-primary-500: #dfdddd;
+  --color-primary-600: #B6B6B6;
+  --color-primary-700: #595656;
+  --color-primary-800: #000000;
 
-  --color-secondary-50: hsl(24, 93%, 83%);
-  --color-secondary-100: hsl(24, 91%, 75%);
-  --color-secondary-200: hsl(24, 96%, 68%);
-  --color-secondary-300: hsl(24, 96%, 61%);
-  --color-secondary-400: hsl(24, 96%, 53%);
-  --color-secondary-500: hsl(24, 100%, 50%);
-  --color-secondary-600: hsl(22, 90%, 50%);
+  --color-secondary-500: #9900ff;
+  --color-secondary-600: #8400ff;
+  --color-secondary-700: #7500ce;
 }
 
 html {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
   margin: 0;
   color: var(--color-gray-100);
-  background: radial-gradient(
+  /* background: radial-gradient(
     ellipse at top left,
     var(--color-primary-300),
     var(--color-primary-800)
-  );
+  ); */
   min-height: 100vh;
 }
 
@@ -76,7 +72,7 @@ button {
 #main-header {
   padding: 1rem 10%;
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 35% 30% 35%;
   justify-content: center;
   justify-items: center;
   align-items: center;
@@ -89,7 +85,7 @@ button {
 }
 
 #logo {
-  color: var(--color-primary-10);
+  color: var(--color-primary-800);
   font-size: 1.15rem;
   justify-self: start;
 }
@@ -99,10 +95,10 @@ button {
 }
 
 .cta {
-  padding: 0.5rem 2rem;
-  background-color: var(--color-primary-400);
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary-800);
   color: var(--color-primary-10);
-  border-radius: 30px;
+  border-radius: 20px;
   border: none;
   display: inline-flex;
   gap: 0.5rem;
@@ -113,7 +109,7 @@ button {
 }
 
 .cta:hover {
-  background-color: var(--color-secondary-600);
+  background-color: var(--color-primary-700);
 }
 
 #cta-nav {
@@ -133,22 +129,16 @@ button {
 }
 
 .cta-alt:hover {
-  color: var(--color-primary-100);
+  color: var(--color-primary-700);
 }
 
 #main-nav a {
-  color: var(--color-primary-100);
+  color: var(--color-primary-800);
 }
 
 #main-nav a:hover,
 #main-nav a.active {
-  color: var(--color-primary-10);
-}
-
-.form-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  color: var(--color-primary-700);
 }
 
 .modal-backdrop {
@@ -231,7 +221,7 @@ button {
 }
 
 .form button {
-  background-color: var(--color-secondary-500);
+  background-color: var(--color-primary-800);
   color: var(--color-gray-50);
   border: none;
   border-radius: 30px;
@@ -240,7 +230,7 @@ button {
 }
 
 .form button:hover {
-  background-color: var(--color-secondary-600);
+  background-color: var(--color-primary-700);
 }
 
 .form button:disabled,
@@ -280,3 +270,4 @@ button {
     transform: translateY(0);
   }
 }
+

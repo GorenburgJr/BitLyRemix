@@ -1,0 +1,47 @@
+.oval-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-primary-700, #2b2bff);
+  border-radius: 999px; /* овал */
+  width: 100%;
+  max-width: 30rem; /* или любое другое значение */
+  padding: 0.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.oval-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.oval-form input::placeholder {
+  color: #ccc;
+}
+
+.oval-form button {
+  border: none;
+  background-color: white;
+  color: var(--color-primary-700, #2b2bff);
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.oval-form button:hover {
+  background-color: #f0f0f0;
+}

@@ -8,10 +8,9 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
-
 import "./tailwind.css";
 import styles from './styles/shared.css'
-import MainHeader from "./components/MainNav";
+import MainHeader from './components/navigation/MainHeader'
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -36,34 +35,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <nav>
-          <MainHeader/>
-        </nav>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
-export function ErrorBoundary({ error }: { error: Error }) {
-  return (
-    <html lang="en">
-      <head>
-        <Meta />
-        <Links />
-        <title>An error</title>
-      </head>
-      <body>
         <header>
           <MainHeader/>
         </header>
-        <main className="">
-          <h1>An Error</h1>
-          <p>{error.message}</p>
-          <p>Back to <Link to='/'>safety</Link>!</p>
-        </main>
+        {children}
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -74,3 +49,4 @@ export function ErrorBoundary({ error }: { error: Error }) {
 export default function App() {
   return <Outlet />;
 }
+

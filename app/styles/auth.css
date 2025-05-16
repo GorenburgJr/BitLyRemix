@@ -2,7 +2,7 @@
   max-width: 24rem;
   margin: 2rem auto;
   border-radius: 8px;
-  background-color: var(--color-primary-200);
+  background-color: var(--color-primary-600);
   color: var(--color-gray-10);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   animation: fade-slide-up 1.5s ease-out forwards;
@@ -11,19 +11,20 @@
 
 #auth-form input {
   text-align: center;
+  color: white
 }
 
 #auth-form a {
   font-size: 0.75rem;
-  color: var(--color-primary-400);
+  color: var(--color-primary-700);
 }
 
 #auth-form a:hover {
-  color: var(--color-primary-400);
+  color: var(--color-primary-700);
 }
 
 .icon-img {
-  border: 2px solid var(--color-primary-10);
+  border: 2px solid var(--color-primary-700);
   border-radius: 50%;
   font-size: 1.5rem;
   width: 4rem;
@@ -32,12 +33,13 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+  background:rgba(0, 0, 0, 0.2)
 }
 
 .icon-img svg {
   animation: fade-slide-up 1.5s ease-out forwards;
 }
 
-.form-control {
-  background-color: var(--color-primary-10)
+.background-form {
+  background-color: var(--color-primary-700)
 }
