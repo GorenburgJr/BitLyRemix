@@ -1,3 +1,9 @@
+import MainHeader from "~/components/navigation/MainHeader";
+
 export default function AboutPage () {
- return
+ return<>
+    <header>
+        <MainHeader/>
+    </header>
+ </>
 }

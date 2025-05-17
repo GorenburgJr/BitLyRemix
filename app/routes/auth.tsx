@@ -1,11 +1,23 @@
+import { redirect } from '@remix-run/react';
 import AuthForm from '../components/auth/AuthForm';
-import { login, signup } from '../data/auth.server';
+import { getUserFromSession, login, signup } from '../data/auth.server';
 import { validateCredentials } from '../data/validation.server';
 import authStyles from '../styles/auth.css';
+import MainHeader from '~/components/navigation/MainHeader';
 
 export default function AuthPage() {
   return<>
+  <nav>
+    <MainHeader/>
+  </nav>
       <AuthForm /></>
+    
+}
+
+export async function loader({request}) {
+    if(await getUserFromSession(request)) {
+      return redirect('/profile')}
+    return null
     
 }
 

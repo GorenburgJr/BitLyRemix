@@ -1,4 +1,4 @@
-import { NavLink } from '@remix-run/react';
+import { Form, NavLink } from '@remix-run/react';
 
 import Logo from '../util/Logo';
 
@@ -9,18 +9,21 @@ function ProfileHeader() {
       <nav id="main-nav">
         <ul>
           <li>
-            <NavLink to="/modes/single">
-              Play
+            <NavLink to="/profile/links">
+              My Links
             </NavLink>
           </li>
           <li>
             <NavLink to="/profile/stats">My Stats</NavLink>
           </li>
+          <li>
+            <NavLink to='/profile/subscribe'>My Subscribe</NavLink>
+          </li>
         </ul>
       </nav>
-      <nav id="cta-nav">
-        <button className="cta">Logout</button>
-      </nav>
+      <Form method="post" action="logout">
+          <button className="cta">Logout</button>
+      </Form>
     </header>
   );
 }

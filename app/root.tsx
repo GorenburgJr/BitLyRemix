@@ -1,5 +1,4 @@
 import {
-  Link,
   Links,
   Meta,
   Outlet,
@@ -10,7 +9,8 @@ import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 import styles from './styles/shared.css'
-import MainHeader from './components/navigation/MainHeader'
+import { getUserFromSession } from "./data/auth.server";
+import { createUrl } from "./data/url.server";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -35,15 +35,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <header>
-          <MainHeader/>
-        </header>
         {children}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
+}
+
+export async function action ({ request }: {request: Request}) {
+    const formData = await request.formData()
+    const url = Object.fromEntries(formData).url
+    const userID = await getUserFromSession(request)
+    
+    try {
+      return await createUrl(url , userID)
+    } catch (err) {
+      return err
+    }
+    
+
 }
 
 export default function App() {
