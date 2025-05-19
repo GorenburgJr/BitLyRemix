@@ -9,6 +9,9 @@ export default function AppLayout() {
     </header>
     <section className="box">
       <UrlForm />
+        <div className="success"> 
+          <input type="text" readOnly/>
+        </div>
     </section>
     </>
 }

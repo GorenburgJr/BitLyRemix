@@ -1,15 +1,15 @@
-import ExpenseListItem from './UrlItemList';
+import UrlItemList from './UrlItemList';
 
-function UrlList({ urls }) {
-
+function UrlList({ urls }): {urls: {}[]} {
   return (
-    <ol id="expenses-list">
+    <ol id="url-list">
       {urls.map((url) => (
         <li key={url.id}>
-          <ExpenseListItem
-            id={expense.id}
-            title={expense.title}
-            amount={expense.amount}
+          <UrlItemList
+            id={url.id}
+            fromUrl={url.fromUrl}
+            shortUrl={url.shortUrl}
+            date={url.date}
           />
         </li>
       ))}

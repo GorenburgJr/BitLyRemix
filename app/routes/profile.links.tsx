@@ -1,35 +1,51 @@
-import { useLoaderData } from "@remix-run/react";
+import { Outlet, useLoaderData } from "@remix-run/react";
 import UrlForm from "~/components/url/form/UrlForm";
-import { requireUserSession } from "~/data/auth.server";
-import { loadUrl } from "~/data/url.server";
+import { getUserFromSession, requireUserSession } from "~/data/auth.server";
+import { createUrl, loadUrl } from "~/data/url.server";
 import UrlStyles from '../styles/url.css'
 import UrlList from "~/components/url/UrlList";
+import { json } from '@remix-run/node';
 
-export async function ProfileLinks() {
+export default function ProfileLinks() {
     const urls = useLoaderData()
 
-    const hasUrls = urls && urls.length > 0
-    
     return(<>
-    <section className="box">
+    <Outlet/>
+    <main>
+    <section className="form-place">
         <UrlForm/>
     </section>
-    <section className="box">
-        {hasUrls && <UrlList urls = {urls} />}
-        {!hasUrls && (
+    <section>
+        {urls && <UrlList urls = {urls} />}
+        {!urls && (
             <section id="no-urls">
                 <h1>Ссылки не найдены</h1>
             </section>
         )}
     </section>
+    </main>
+    
     </>)
 }
 
 export async function loader({request}: {request: Request}) {
     const userId = await requireUserSession(request);
     const loadedUrls = await loadUrl(userId)
+    return json(loadedUrls)
+    
+}
 
-    return loadedUrls
+export async function action({ request }: {request: Request}) {
+    const formData = await request.formData()
+    const url = Object.fromEntries(formData).url
+    const userID = await getUserFromSession(request)
+    
+    try {
+      return await createUrl(url, userID, '/profile/links')
+    } catch (err) {
+      return err
+    }
+
     
 }
 

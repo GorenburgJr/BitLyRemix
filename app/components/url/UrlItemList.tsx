@@ -1,15 +1,10 @@
-import { Link, useFetcher } from '@remix-run/react';
+import { useFetcher } from '@remix-run/react';
 
-function ExpenseListItem({ id, title, amount }) {
+export default function UrlItemList({ id, fromUrl, shortUrl, date }) {
 
   const fetcher = useFetcher();
-  function deleteExpenseItemHandler() {
-    const proceed = confirm('Вы уверены в удаление ссылки?');
-
-    if (!proceed) {
-      return;
-    }
-    fetcher.submit(null, { method: 'delete', action: `/profile/${id}` });
+  function deleteUrlItemHandler() {
+    fetcher.submit(null, { method: 'delete', action: `/profile/links/${id}` });
   }
 
   if (fetcher.state !== 'idle') {
@@ -21,17 +16,15 @@ function ExpenseListItem({ id, title, amount }) {
   }
 
   return (
-    <article className="expense-item">
+    <article className="url-item">
       <div>
-        <h2 className="expense-title">{title}</h2>
-        <p className="expense-amount">${amount.toFixed(2)}</p>
+        <h2 className="url-tourl">{shortUrl}</h2>
+        {/* <p className="url-fromurl">${fromUrl}</p> */}
+        <p className='url-fromurl'>{new Date(date).toDateString().slice(4)}</p>
       </div>
-      <menu className="expense-actions">
-        <button onClick={deleteExpenseItemHandler}>Delete</button>
-        <Link to={id}>Edit</Link>
+      <menu className="url-actions">
+        <button onClick={deleteUrlItemHandler}>Delete</button>
       </menu>
     </article>
   );
 }
-
-export default ExpenseListItem;

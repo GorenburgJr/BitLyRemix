@@ -14,14 +14,14 @@ export default function AuthPage() {
     
 }
 
-export async function loader({request}) {
+export async function loader({request}: {request: Request}) {
     if(await getUserFromSession(request)) {
       return redirect('/profile')}
     return null
     
 }
 
-export async function action({ request }) {
+export async function action({ request }: {request: Request}) {
   const searchParams = new URL(request.url).searchParams;
   const authMode = searchParams.get('mode') || 'login';
 

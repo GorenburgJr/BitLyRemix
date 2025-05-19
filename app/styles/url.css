@@ -8,6 +8,7 @@
   max-width: 30rem; /* или любое другое значение */
   padding: 0.5rem;
   position: relative;
+  z-index: 2;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -17,6 +18,15 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.form-place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 #no-urls {
@@ -30,6 +40,70 @@
 .url-item.locked {
   justify-content: center;
   background-color: var(--color-primary-200);
+}
+
+.url-item {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: var(--color-primary-700);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-gray-10);
+}
+
+.url-item :hover {
+
+}
+
+.success {
+  position: relative;
+  transform: translateY(-100%);
+  background-color:#000;
+  padding: 10px;
+  transition: transform .2s linear;
+}
+
+
+
+/*     transform: translateY(0px)  up*/ 
+
+.url-tourl {
+  margin: 0;
+}
+
+.url-fromurl {
+  margin: 0;
+}
+
+.url-actions {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.url-actions button {
+  border: none;
+  background-color: white;
+  color: var(--color-primary-700, #2b2bff);
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.oval-form button:hover {
+  background-color: #f0f0f0;
+}
+
+#url-list {
+  max-width: 32rem;
+  margin: 2rem auto;
 }
 
 .oval-form input {

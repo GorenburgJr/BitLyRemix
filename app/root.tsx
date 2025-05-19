@@ -1,4 +1,5 @@
 import {
+  Link,
   Links,
   Meta,
   Outlet,
@@ -45,11 +46,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export async function action ({ request }: {request: Request}) {
     const formData = await request.formData()
-    const url = Object.fromEntries(formData).url
+    const url = formData.get('url')
     const userID = await getUserFromSession(request)
     
     try {
-      return await createUrl(url , userID)
+      const res =  await createUrl(url, userID, '/')
+      
     } catch (err) {
       return err
     }
