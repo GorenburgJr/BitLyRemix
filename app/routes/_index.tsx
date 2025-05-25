@@ -16,7 +16,6 @@ export default function AppLayout() {
     </>
 }
 
-
 export function links() {
   return [{ rel: 'stylesheet', href: urlStyles }];
 }

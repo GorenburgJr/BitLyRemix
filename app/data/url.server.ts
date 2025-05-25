@@ -1,6 +1,18 @@
 import { generatingURL } from "../components/url/urlGenerator";
+import { Stats } from "./create.data";
 import { prisma } from "./database.server";
 import { redirect } from "@remix-run/react";
+
+export type UrlStats = {
+    url: number,
+    platform?: string,
+    mobileDevice: boolean,
+    browser?: string,
+    location: string,
+    date: Date,
+    referrer: string
+}
+
 
 export async function createUrl(url:string, user: number | null, redirectUrl: string) {
 
@@ -17,7 +29,7 @@ export async function createUrl(url:string, user: number | null, redirectUrl: st
         userId: user,
         shortUrl: shortUrl,
         fromUrl: url,
-        date: new Date()
+        date: new Date(),
     }
     })
     
@@ -36,4 +48,10 @@ export async function deleteUrl(id: number) {
     catch (err){
         throw new Error('Failed to delete expense.')
     } 
+}
+
+export async function saveUrlStat(stats: UrlStats) {
+
+    const { platform, mobileDevice, browser, location, date, referrer, url} = stats
+    await prisma.stats.create({data: {platform, mobileDevice, browser, location, date, referrer, urlId: Number(url)}})
 }

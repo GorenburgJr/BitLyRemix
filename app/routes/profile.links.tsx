@@ -38,10 +38,10 @@ export async function loader({request}: {request: Request}) {
 export async function action({ request }: {request: Request}) {
     const formData = await request.formData()
     const url = Object.fromEntries(formData).url
-    const userID = await getUserFromSession(request)
+    const userId = await getUserFromSession(request)
     
     try {
-      return await createUrl(url, userID, '/profile/links')
+      return await createUrl(url, userId, '/profile/links')
     } catch (err) {
       return err
     }

@@ -1,5 +1,4 @@
 import {
-  Link,
   Links,
   Meta,
   Outlet,
@@ -48,15 +47,12 @@ export async function action ({ request }: {request: Request}) {
     const formData = await request.formData()
     const url = formData.get('url')
     const userID = await getUserFromSession(request)
-    
+
     try {
-      const res =  await createUrl(url, userID, '/')
-      
+    await createUrl(url, userID, '/')
     } catch (err) {
       return err
     }
-    
-
 }
 
 export default function App() {
