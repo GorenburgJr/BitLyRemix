@@ -5,13 +5,14 @@ import { useState } from 'react'
 import { requireUserSession } from '~/data/auth.server'
 import UniversalStatsComponent from '~/components/url/stats/ChartUniversalComponent'
 import TimeStatsComponent from '~/components/url/stats/ChartTimeComponent'
-import { DatesStatistic } from '~/data/statistic.sort'
+import { mainStatistic } from '~/data/statistic.sort'
 
 export default function ProfileStatsPage() {
     const loadedData = (useLoaderData<typeof loader>())
-    const url = loadedData[1]
+    const url = loadedData[0]
     const [expanded, setExpanded] = useState(false)
-    const data = 0
+    const data = loadedData[1]
+    console.log(data)
     return(<>
         <main className='box'>
             <div className='main-info'>
@@ -23,10 +24,11 @@ export default function ProfileStatsPage() {
                     <p>Days left</p>
                 </section>
                 <section className='square'>
-                    <TimeStatsComponent data={data}/>
+                    {/* <TimeStatsComponent data={data}/> */}
                 </section>
                 <section className='rect'>
-                    {/* <UniversalStatsComponent data={data} /> */}
+                    {/* <TimeStatsComponent data={data}/> */}
+                    <UniversalStatsComponent data={data.browserStats} />
                 </section>
             </div>
         </main>
@@ -36,8 +38,8 @@ export default function ProfileStatsPage() {
 export async function loader({ request }: {request: Request}) {
     const userId = await requireUserSession(request);
     const url = await prisma.url.findFirst({where: {userId: userId}})
-    DatesStatistic(3)
-    return json([0, url])
+    const urlStatistic = await mainStatistic(3)
+    return json([url, urlStatistic])
 }
 
 export function links() {
