@@ -19,7 +19,6 @@ export default function UrlItemList({ id, fromUrl, shortUrl, date }) {
     <article className="url-item">
       <div>
         <h2 className="url-tourl">{shortUrl}</h2>
-        {/* <p className="url-fromurl">${fromUrl}</p> */}
         <p className='url-fromurl'>{new Date(date).toDateString().slice(4)}</p>
       </div>
       <menu className="url-actions">

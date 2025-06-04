@@ -12,7 +12,6 @@ export default function ProfileStatsPage() {
     const url = loadedData[0]
     const [expanded, setExpanded] = useState(false)
     const data = loadedData[1]
-    console.log(data)
     return(<>
         <main className='box'>
             <div className='main-info'>
@@ -25,10 +24,12 @@ export default function ProfileStatsPage() {
                 </section>
                 <section className='square'>
                     {/* <TimeStatsComponent data={data}/> */}
+                    
                 </section>
                 <section className='rect'>
-                    {/* <TimeStatsComponent data={data}/> */}
-                    <UniversalStatsComponent data={data.browserStats} />
+                    <UniversalStatsComponent data={data.platformStats} />
+                    {/* <TimeStatsComponent data={data.timeStats}/> */}
+                    
                 </section>
             </div>
         </main>

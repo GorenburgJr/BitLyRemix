@@ -14,27 +14,28 @@ export type UrlStats = {
 }
 
 
-export async function createUrl(url:string, user: number | null, redirectUrl: string) {
+export async function createUrl(url: string, user: number | null): Promise<{ shortUrl: string }> {
+  const checkedUrl = await prisma.url.findFirst({ where: { fromUrl: url } });
+  const shortUrl = generatingURL(6);
 
-    const checkedUrl = await prisma.url.findFirst({where: {fromUrl: url}})
-    const shortUrl = generatingURL(6)
+  if (checkedUrl) {
+    throw new Response("Already exists", { status: 409 });
+  }
 
-    if(checkedUrl) {
-        throw new Response('Not found', {status:404})
-    }
+  if (user === null) user = 0;
 
-    if(user === null) user = 0
+  await prisma.url.create({
+    data: {
+      userId: user,
+      shortUrl,
+      fromUrl: url,
+      date: new Date(),
+    },
+  });
 
-    await prisma.url.create({data: {
-        userId: user,
-        shortUrl: shortUrl,
-        fromUrl: url,
-        date: new Date(),
-    }
-    })
-    
-    return redirect(shortUrl, redirectUrl)
+  return { shortUrl };
 }
+
 
 export async function loadUrl(user: number) {
     const url = await prisma.url.findMany({where: {userId: user}})

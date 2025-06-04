@@ -9,7 +9,7 @@
 
 .main-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.9fr 1.2fr;
   grid-template-rows: 1fr 1fr;
   gap: 20px;
   width: 92%;
@@ -19,7 +19,6 @@
 .square {
   background-color: var(--color-primary-600);
   border-radius: 10px;
-  aspect-ratio: 1 / 1;
   padding: 1rem;
 
   display: flex;
