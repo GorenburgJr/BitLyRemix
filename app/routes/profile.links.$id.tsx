@@ -12,7 +12,7 @@ export default async function UrlItemPage() {
 
 export async function action({ params, request }: {params: Params ,request: Request}) {
     const urlId = params.id
-
+    
     if (request.method === 'DELETE') {
     await deleteUrl(urlId);
     redirect('/profile/links')

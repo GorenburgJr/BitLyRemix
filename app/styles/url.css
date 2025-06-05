@@ -40,10 +40,10 @@
 }
 
 .success-input {
-    flex: 1;
+  flex: 1;
   border: none;
   outline: none;
-  padding: 0.8rem 1rem;
+  padding: 0.2rem 1rem;
   border-radius: 999px;
   font-size: 1rem;
   background-color: rgba(255, 255, 255, 0.15);
@@ -102,6 +102,7 @@
 
 .url-item :hover {
   padding: 1.5rem;
+  text-align: left;
 }
 
 .url-tourl {

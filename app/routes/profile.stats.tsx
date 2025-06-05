@@ -27,9 +27,16 @@ export default function ProfileStatsPage() {
                     
                 </section>
                 <section className='rect'>
-                    <UniversalStatsComponent data={data.platformStats} />
-                    {/* <TimeStatsComponent data={data.timeStats}/> */}
+                    <div className='rect-chart'>
+                        <UniversalStatsComponent data={data.platformStats} />
+                    </div>
                     
+                    <div className='rect-info'>
+                        <p> 123</p>
+                    </div>
+                    <div className='rect-tabs'>
+                        <button>pum</button>
+                    </div>
                 </section>
             </div>
         </main>

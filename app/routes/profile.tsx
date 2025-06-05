@@ -5,8 +5,6 @@ import { requireUserSession } from "~/data/auth.server";
 
 
 export default function Profile () {
-    
-
     return<>
     <ProfileHeader />
     <Outlet />

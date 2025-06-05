@@ -33,7 +33,7 @@ export async function mainStatistic (url: number) {
     return statUrl
 }
 
-async function itemRelation(data: any[], itemName: string): Promise<Record<string, number>> {
+async function itemRelation(data: any[], itemName: string): Promise<{ name: string; value: number }[]> {
   const relation: Record<string, number> = {};
 
   for (let i = 0; i < data.length; i++) {
@@ -42,8 +42,8 @@ async function itemRelation(data: any[], itemName: string): Promise<Record<strin
 
     relation[value] = (relation[value] ?? 0) + 1;
   }
-
-  return relation;
+  
+  return Object.entries(relation).map(([name, value]) => ({ name, value }));
 }
 
 

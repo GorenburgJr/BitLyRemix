@@ -1,14 +1,15 @@
 import {
+  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+} from '@remix-run/react';
 
-import "./tailwind.css";
-import styles from './styles/shared.css'
+import sharedStyles from '~/styles/shared.css';
+import Error from './components/util/Error';
+import { LinksFunction } from '@remix-run/node';
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -19,7 +20,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: styles,
+    href: sharedStyles,
   },
 ];
 
@@ -43,5 +44,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return <Outlet />;
+}
+
+export function ErrorBoundary({ error }: { error: Error }) {
+  return (
+    <main>
+      <Outlet />
+      <Error title="An error occurred">
+        <p>{(error as Error)?.message || 'Something went wrong. Please try again later.'}</p>
+      </Error>
+      <div className='error'>
+        <p>
+        Back to <Link to="/">safety</Link>.
+      </p>
+      </div>
+      
+    </main>
+  );
 }
 
