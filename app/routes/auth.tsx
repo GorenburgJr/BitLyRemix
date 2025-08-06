@@ -10,7 +10,7 @@ export default function AuthPage() {
   <nav>
     <MainHeader/>
   </nav>
-      <AuthForm /></>
+    <AuthForm /></>
     
 }
 

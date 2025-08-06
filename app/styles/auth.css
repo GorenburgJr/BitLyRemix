@@ -24,6 +24,7 @@
 }
 
 .icon-img {
+  margin: 3vh;
   border: 2px solid var(--color-primary-700);
   border-radius: 50%;
   font-size: 1.5rem;

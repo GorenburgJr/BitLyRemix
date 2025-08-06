@@ -1,13 +1,14 @@
 import { getUserFromSession } from "~/data/auth.server";
 import UrlForm from "../components/url/form/UrlForm";
 import urlStyles from '../styles/url.css';
-import MainHeader from "~/components/navigation/MainHeader";
 import { createUrl } from "~/data/url.server";
-import { useActionData } from "@remix-run/react";
+import { useActionData, useLoaderData } from "@remix-run/react";
+import MainHeader from "~/components/navigation/MainHeader";
 
 export default function AppLayout() {
   const actionData = useActionData<typeof action>()
-
+  const loaderData = useLoaderData()
+  // console.log(loaderData)
   const writeDAshboardText = async () => {
     try {navigator.clipboard.writeText(`https://localhost:5432/${actionData?.shortUrl}`)}
     catch (err) {
@@ -16,7 +17,7 @@ export default function AppLayout() {
   }
   return <>
   <header>
-    <MainHeader/>
+    <MainHeader userId={loaderData} />
   </header>
   <section className="box">
     <UrlForm />
@@ -48,6 +49,13 @@ export async function action({ request }: { request: Request }) {
   }
 
 
+}
+
+export async function loader({request}: {request: Request}) {
+    if(await getUserFromSession(request)) {
+      return true}
+    return false
+    
 }
 
 export function links() {

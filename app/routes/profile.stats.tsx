@@ -23,7 +23,7 @@ export default function ProfileStatsPage() {
                     <p>Days left</p>
                 </section>
                 <section className='square'>
-                    {/* <TimeStatsComponent data={data}/> */}
+                    <TimeStatsComponent data={data}/>
                     
                 </section>
                 <section className='rect'>
@@ -35,7 +35,9 @@ export default function ProfileStatsPage() {
                         <p> 123</p>
                     </div>
                     <div className='rect-tabs'>
-                        <button>pum</button>
+                        <button>Devices</button>
+                        <p>Platform</p>
+                        <button>Browser</button>
                     </div>
                 </section>
             </div>

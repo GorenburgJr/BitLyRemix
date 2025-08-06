@@ -28,7 +28,11 @@ html {
 
 body {
   margin: 0;
-  color: var(--color-gray-100);
+      background: radial-gradient(
+    ellipse at top left,
+    #ffffff00,
+    #cecccc
+  );
   min-height: 100vh;
 }
 
@@ -82,8 +86,8 @@ button {
 
 .cta {
   padding: 0.5rem 1rem;
-  background-color: var(--color-primary-800);
-  color: var(--color-primary-10);
+  background-color: white;
+  color: var(--color-primary-700, #2b2bff);
   border-radius: 20px;
   border: none;
   display: inline-flex;
@@ -95,7 +99,7 @@ button {
 }
 
 .cta:hover {
-  background-color: var(--color-primary-700);
+  background-color: var(--color-primary-500);
 }
 
 #cta-nav {
@@ -125,25 +129,6 @@ button {
 #main-nav a:hover,
 #main-nav a.active {
   color: var(--color-primary-700);
-}
-
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal {
-  position: fixed;
-  top: 25vh;
-  width: 30rem;
-  border-radius: 6px;
-  border: none;
-  background-color: var(--color-gray-50);
-  animation: fade-slide-down 0.5s ease-out forwards;
 }
 
 .error {

@@ -1,7 +1,7 @@
 import { Link , NavLink } from '@remix-run/react';
 import Logo from '../util/Logo';
 
-function MainHeader() {
+function MainHeader(userId: boolean) {
   return (
     <header id="main-header">
       <Logo />
@@ -17,15 +17,30 @@ function MainHeader() {
       </nav>
       <nav id="cta-nav">
         <ul>
-          <li>
+          {/* {userId && <li>
+            <Link to="/profile" className="cta">
+              Profile
+            </Link>
+          </li>}
+          {!userId && <li>
             <Link to="/auth" className="cta">
               Login
             </Link>
-          </li>
+          </li>} */}
+          {userId.userId === true? <li>
+            <Link to="/profile" className="cta">
+              Profile
+            </Link>
+          </li> : <li>
+            <Link to="/auth" className="cta">
+              Login
+            </Link>
+          </li>}
         </ul>
       </nav>
     </header>
   );
 }
+
 
 export default MainHeader;

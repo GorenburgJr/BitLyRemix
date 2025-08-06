@@ -2,7 +2,7 @@ import { useSearchParams } from '@remix-run/react';
 import { FaLock, FaUserPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-function AuthForm() {
+export default function AuthForm() {
   const [searchParams] = useSearchParams()
   const authMode = searchParams.get('mode') || 'login'
 
@@ -29,5 +29,3 @@ function AuthForm() {
     </form>
   );
 }
-
-export default AuthForm;
