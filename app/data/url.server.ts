@@ -1,7 +1,5 @@
 import { generatingURL } from "../components/url/urlGenerator";
-import { Stats } from "./create.data";
 import { prisma } from "./database.server";
-import { redirect } from "@remix-run/react";
 
 export type UrlStats = {
     url: number,
@@ -14,15 +12,13 @@ export type UrlStats = {
 }
 
 
-export async function createUrl(url: string, user: number | null): Promise<{ shortUrl: string }> {
-  const checkedUrl = await prisma.url.findFirst({ where: { fromUrl: url } });
+export async function createUrl(url: string, user: number ): Promise<{ shortUrl: string }> {
+  const checkedUrl = await prisma.url.findFirst({ where: { fromUrl: url, userId: user} });
   const shortUrl = generatingURL(6);
 
-  if (checkedUrl) {
-    throw new Response("Already exists", { status: 409 });
+  if (checkedUrl && user !== 0) {
+    throw new Response("Уже существует", { status: 409 });
   }
-
-  if (user === null) user = 0;
 
   await prisma.url.create({
     data: {
@@ -30,9 +26,10 @@ export async function createUrl(url: string, user: number | null): Promise<{ sho
       shortUrl,
       fromUrl: url,
       date: new Date(),
+      clicks: 0
     },
   });
-
+  
   return { shortUrl };
 }
 

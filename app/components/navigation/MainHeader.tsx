@@ -17,16 +17,6 @@ function MainHeader(userId: boolean) {
       </nav>
       <nav id="cta-nav">
         <ul>
-          {/* {userId && <li>
-            <Link to="/profile" className="cta">
-              Profile
-            </Link>
-          </li>}
-          {!userId && <li>
-            <Link to="/auth" className="cta">
-              Login
-            </Link>
-          </li>} */}
           {userId.userId === true? <li>
             <Link to="/profile" className="cta">
               Profile

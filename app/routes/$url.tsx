@@ -12,6 +12,7 @@ export async function loader ({ params, request }: {request: Request, params: Pa
     const shortUrl = params.url
     const findedUrl = await prisma.url.findFirst({where: {shortUrl}})
     if(findedUrl){
+        findedUrl.clicks = findedUrl.clicks + 1
         const ua = UAParser(request.headers.get('user-agent')) 
         const stats: UrlStats = {
             url: findedUrl.id,
@@ -23,7 +24,7 @@ export async function loader ({ params, request }: {request: Request, params: Pa
             referrer: ''
         }
         saveUrlStat(stats)
-
+        await prisma.url.update({where: { id: findedUrl.id}, data: {clicks: findedUrl.clicks}})
      return redirect(findedUrl.fromUrl)   
     }
         

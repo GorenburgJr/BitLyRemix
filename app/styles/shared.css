@@ -87,7 +87,7 @@ button {
 .cta {
   padding: 0.5rem 1rem;
   background-color: white;
-  color: var(--color-primary-700, #2b2bff);
+  color: var(--color-primary-800);
   border-radius: 20px;
   border: none;
   display: inline-flex;

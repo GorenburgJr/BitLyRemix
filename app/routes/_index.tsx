@@ -8,7 +8,6 @@ import MainHeader from "~/components/navigation/MainHeader";
 export default function AppLayout() {
   const actionData = useActionData<typeof action>()
   const loaderData = useLoaderData()
-  // console.log(loaderData)
   const writeDAshboardText = async () => {
     try {navigator.clipboard.writeText(`https://localhost:5432/${actionData?.shortUrl}`)}
     catch (err) {
@@ -36,7 +35,7 @@ export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const url = formData.get("url")?.toString();
   const userID = await getUserFromSession(request);
-
+  
   if (!url) {
     return { error: "Не указана ссылка" };
   }

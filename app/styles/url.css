@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-primary-700, #2b2bff);
+  background-color: var(--color-primary-700);
   border-radius: 999px;
   width: 100%;
   max-width: 30rem;
@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  background-color: var(--color-primary-700, #2b2bff);
+  background-color: var(--color-primary-700);
   padding: 0.5rem;
   border-radius: 999px;
   width: 27%;
@@ -89,22 +89,6 @@
   background-color: var(--color-primary-200);
 }
 
-.url-item {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background-color: var(--color-primary-700);
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--color-gray-10);
-}
-
-.url-item :hover {
-  padding: 1.5rem;
-  text-align: left;
-}
-
 .url-tourl {
   margin: 0;
 }
@@ -118,9 +102,10 @@
 }
 
 .url-actions button {
+  justify-content: center;
   border: none;
   background-color: white;
-  color: var(--color-primary-700, #2b2bff);
+  color: var(--color-primary-700);
   font-weight: bold;
   padding: 0.8rem 1.5rem;
   border-radius: 999px;
@@ -138,6 +123,27 @@
   margin: 2rem auto;
 }
 
+#url-list li {
+  animation: fade-slide-up 1.5s ease-out forwards;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: var(--color-primary-700);
+  border-radius: 20px;
+  color: var(--color-gray-10);
+}
+
+#url-list li a {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#url-list li:hover {
+  background-color: var(--color-primary-600);
+}
+
 .oval-form input::placeholder {
   color: #ccc;
 }
@@ -145,7 +151,7 @@
 .oval-form button {
   border: none;
   background-color: white;
-  color: var(--color-primary-700, #2b2bff);
+  color: var(--color-primary-700);
   font-weight: bold;
   padding: 0.8rem 1.5rem;
   border-radius: 999px;
@@ -161,7 +167,7 @@
 .copy-btn {
   border: none;
   background-color: white;
-  color: var(--color-primary-700, #2b2bff);
+  color: var(--color-primary-700);
   font-weight: bold;
   padding: 0.8rem 1.5rem;
   border-radius: 999px;

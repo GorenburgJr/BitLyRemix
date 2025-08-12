@@ -33,7 +33,7 @@ export async function getUserFromSession(request) {
   const userId = session.get('userId');
 
   if (!userId) {
-    return null;
+    return 0;
   }
 
   return userId;

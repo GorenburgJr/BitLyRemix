@@ -13,6 +13,7 @@ model Url {
   shortUrl String   @db.VarChar
   date     DateTime @db.Date
   userId   Int
+  clicks  Int @default(0)
   user     User     @relation(fields: [userId], references: [id])
   stats    Stats[]
 }

@@ -10,6 +10,7 @@ function UrlList({ urls }): {urls: {}[]} {
             fromUrl={url.fromUrl}
             shortUrl={url.shortUrl}
             date={url.date}
+            clickCount={url.clicks}
           />
         </li>
       ))}
