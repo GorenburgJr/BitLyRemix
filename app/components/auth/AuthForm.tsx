@@ -50,6 +50,7 @@ export default function AuthForm() {
             name="password"
             minLength={7}
             placeholder=" "
+            required
             autoComplete={authMode === 'login' ? 'current-password' : 'new-password'}
             className="background-form"
             aria-invalid={!!actionData?.fieldErrors?.password}

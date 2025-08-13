@@ -37,13 +37,12 @@
 
 
 .rect {
+  justify-content: center;
   background-color: var(--color-primary-600);
   border-radius: 10px;
   grid-column: span 2;
   width: 100%;
   display: grid;
-  grid-template-columns: 0.3fr 1fr;
-  grid-template-rows: 1 1
 }
 
 .rect-chart {
@@ -57,7 +56,28 @@
 }
 
 .rect-tabs {
-  grid-row: 2 / 2;
+  margin: 2vh;
+  gap: 0.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: var(--color-primary-800);
+  border-radius: 20px;
+  width: 43vh;
+  height: 5vh;
+  background-color: gray;
+}
+
+.rect-tabs button {
+  margin: 0;
+  border: 0;
+  gap: 0.5rem;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.rect-tabs button:hover {
+  background-color: var(--color-primary-500)
 }
 
 .rect-info {
@@ -79,3 +99,5 @@
   white-space: normal;
   overflow: visible;
 }
+
+

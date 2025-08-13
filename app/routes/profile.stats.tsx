@@ -16,7 +16,7 @@ export default function ProfileStatsPage() {
         <main className='box'>
             <div className='main-info'>
                 <section className='square'>
-                    <h1>Short Url - {url.shortUrl}</h1>
+                    <p>Short Url - {url.shortUrl}</p>
                     <button className={`collapsible-line ${expanded ? "expanded" : ""}`}
         onClick={() => setExpanded(!expanded)}>Original Url - {url.fromUrl}</button>
                     <p>{Date(url.date).slice(0, 15)}</p>
@@ -31,12 +31,14 @@ export default function ProfileStatsPage() {
                         <UniversalStatsComponent data={data.platformStats} />
                     </div>
                     
-                    <div className='rect-info'>
+                    {/* <div className='rect-info'>
                         <p> 123</p>
-                    </div>
+                    </div> */}
+
+
                     <div className='rect-tabs'>
                         <button>Devices</button>
-                        <p>Platform</p>
+                        <button>Platform</button>
                         <button>Browser</button>
                     </div>
                 </section>
