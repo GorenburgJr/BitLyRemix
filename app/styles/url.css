@@ -1,4 +1,5 @@
 .oval-form {
+  margin: 2vh auto;
   display: flex;
   align-items: center;
   justify-content: space-between;

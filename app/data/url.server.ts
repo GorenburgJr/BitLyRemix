@@ -1,4 +1,4 @@
-import { generatingURL } from "../components/url/urlGenerator";
+import { generatingURL } from "../components/util/urlGenerator";
 import { prisma } from "./database.server";
 
 export type UrlStats = {
@@ -14,8 +14,12 @@ export type UrlStats = {
 
 export async function createUrl(url: string, user: number ): Promise<{ shortUrl: string }> {
   const checkedUrl = await prisma.url.findFirst({ where: { fromUrl: url, userId: user} });
-  const shortUrl = generatingURL(6);
+  let shortUrl: string;
 
+  do {
+    shortUrl = generatingURL(6);
+  } while (await prisma.url.findFirst({ where: { shortUrl: shortUrl } }))
+  
   if (checkedUrl && user !== 0) {
     throw new Response("Уже существует", { status: 409 });
   }

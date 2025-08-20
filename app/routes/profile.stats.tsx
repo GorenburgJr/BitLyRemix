@@ -1,45 +1,30 @@
 import { prisma } from '~/data/database.server'
 import StatsStyles from '../styles/stats.css'
 import { json, useLoaderData } from '@remix-run/react'
-import { useState } from 'react'
 import { requireUserSession } from '~/data/auth.server'
-import UniversalStatsComponent from '~/components/url/stats/ChartUniversalComponent'
-import TimeStatsComponent from '~/components/url/stats/ChartTimeComponent'
 import { mainStatistic } from '~/data/statistic.sort'
+import RectTabs from '~/components/url/stats/rectTabs'
+import { ChartButton } from 'types'
 
 export default function ProfileStatsPage() {
     const loadedData = (useLoaderData<typeof loader>())
-    const url = loadedData[0]
-    const [expanded, setExpanded] = useState(false)
-    const data = loadedData[1]
+    const buttons: ChartButton[] = [
+        {name: 'Devices', disabled: false}, 
+        {name: 'Platforms', disabled: false}, 
+        {name: 'Browser', disabled: false}
+    ]
     return(<>
         <main className='box'>
             <div className='main-info'>
                 <section className='square'>
-                    <p>Short Url - {url.shortUrl}</p>
-                    <button className={`collapsible-line ${expanded ? "expanded" : ""}`}
-        onClick={() => setExpanded(!expanded)}>Original Url - {url.fromUrl}</button>
-                    <p>{Date(url.date).slice(0, 15)}</p>
-                    <p>Days left</p>
+
                 </section>
                 <section className='square'>
-                    <TimeStatsComponent data={data}/>
-                    
+                    <div></div>
+                    <RectTabs data= {buttons}/>
                 </section>
                 <section className='rect'>
                     <div className='rect-chart'>
-                        <UniversalStatsComponent data={data.platformStats} />
-                    </div>
-                    
-                    {/* <div className='rect-info'>
-                        <p> 123</p>
-                    </div> */}
-
-
-                    <div className='rect-tabs'>
-                        <button>Devices</button>
-                        <button>Platform</button>
-                        <button>Browser</button>
                     </div>
                 </section>
             </div>
@@ -48,12 +33,29 @@ export default function ProfileStatsPage() {
 }
 
 export async function loader({ request }: {request: Request}) {
+    const searchParams = new URL(request.url).searchParams
+    const chartMode = searchParams.get('mode') || 'devices'
+    switch (chartMode) {
+        case 'devices':
+            break;
+        case 'platform':
+            break;
+        case 'browser':
+            break;
+    }
     const userId = await requireUserSession(request);
     const url = await prisma.url.findFirst({where: {userId: userId}})
     const urlStatistic = await mainStatistic(3)
     return json([url, urlStatistic])
 }
 
+export async function action({ request }: {request: Request}) {
+    const searchParams = new URL(request.url).searchParams
+    const chartMode = searchParams.get('mode') || 'devices'
+    
+}
+
 export function links() {
     return({rel: 'stylesheet', href: StatsStyles})
 }
+

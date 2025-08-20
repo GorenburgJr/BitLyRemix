@@ -8,7 +8,7 @@ import MainHeader from "~/components/navigation/MainHeader";
 export default function AppLayout() {
   const actionData = useActionData<typeof action>()
   const loaderData = useLoaderData()
-  const writeDAshboardText = async () => {
+  const writeDashboardText = async () => {
     try {navigator.clipboard.writeText(`https://localhost:5432/${actionData?.shortUrl}`)}
     catch (err) {
       throw new Error('Copy error')
@@ -24,7 +24,7 @@ export default function AppLayout() {
         <div className="success-input">
           <p>https://localhost:5432/{actionData?.shortUrl}</p> 
           </div>
-          <button className="copy-btn" onClick={writeDAshboardText}>Copy</button>
+          <button className="copy-btn" onClick={writeDashboardText}>Copy</button>
       </div>
     }
   </section>
